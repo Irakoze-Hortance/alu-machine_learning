@@ -1,30 +1,20 @@
 #!/usr/bin/env python3
-"""[summary]
+'''
+    A function def pca(X, var=0.95):
+    that performs PCA on a dataset
+'''
 
-Returns:
-    [type]: [description]
-"""
+
 import numpy as np
 
 
 def pca(X, var=0.95):
-    """[summary]
-
-    Args:
-        X ([type]): [description]
-        var (float, optional): [description]. Defaults to 0.95.
-
-    Returns:
-        [type]: [description]
-    """
-    U, S, Vh = np.linalg.svd(X)
-
-    cum = np.cumsum(S)
-
-    idx = len(cum) - 1
-    for i in range(len(cum)):
-        if cum[i] / cum[-1] >= var:
-            idx = i
-            break
-
-    return Vh.T[:, :i + 1]
+    '''
+    performs PCA on a dataset
+    '''
+    u, s, v = np.linalg.svd(X)
+    ratios = list(x / np.sum(s) for x in s)
+    variance = np.cumsum(ratios)
+    nd = np.argwhere(variance >= var)[0, 0]
+    W = v.T[:, :(nd + 1)]
+    return (W)

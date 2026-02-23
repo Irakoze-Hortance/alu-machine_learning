@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""[summary]
+'''
+    A function def pca(X, ndim):
+    that performs PCA on a dataset
+'''
 
-Returns:
-    [type]: [description]
-"""
+
 import numpy as np
 
 
 def pca(X, ndim):
-    """[summary]
-
-    Args:
-        X ([type]): [description]
-        ndim ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
-    _, _, v = np.linalg.svd(X - np.mean(X, axis=0))
-    return np.matmul(X - np.mean(X, axis=0), v[:ndim].T)
+    '''
+    performs PCA on a dataset
+    '''
+    mean = np.mean(X, axis=0, keepdims=True)
+    A = X - mean
+    u, s, v = np.linalg.svd(A)
+    W = v.T[:, :ndim]
+    T = np.matmul(A, W)
+    return (T)

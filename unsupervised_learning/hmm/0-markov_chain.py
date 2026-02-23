@@ -1,33 +1,18 @@
 #!/usr/bin/env python3
-"""
-Defines function that determines the probability of a Markov Chain
+'''
+Function def markov_chain(P, s, t=1): that
+determines the probability of a markov chain
 being in a particular state after a specified number of iterations
-"""
+'''
 
 
 import numpy as np
 
 
 def markov_chain(P, s, t=1):
-    """
-    Determines the probability of a Markov Chain being in a particular state
-    after a specified number of iterations
-
-    parameters:
-        P [square 2D numpy.ndarray of shape (n, n)]:
-            representing the transition matrix
-            n: the number of states in the Markov Chain
-        s [numpy.ndarray of shape (1, n)]:
-            represents the probability of starting in each state
-        t [int]:
-            the number of iterations the Markov Chain has been through
-
-    returns:
-        [a numpy.ndarray of shape (1, n)]:
-            representing the probability of being in a specified state
-                after t iterations
-        or None on failure
-    """
+    '''
+        Determines the probability of a markov chain
+    '''
     # check that P is the correct type and dimensions
     if type(P) is not np.ndarray or len(P.shape) != 2:
         return None

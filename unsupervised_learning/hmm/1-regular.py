@@ -1,28 +1,19 @@
 #!/usr/bin/env python3
-"""
-Defines function that determines the steady state probabilities of
-a regular Markov Chain
-"""
+'''
+    Function def regular(P): that determines
+    the steady state probabilities of a regular
+    markov chain
+'''
 
 
 import numpy as np
 
 
 def regular(P):
-    """
-    Determines the steady state probabilities of a regular Markov Chain
-
-    parameters:
-        P [square 2D numpy.ndarray of shape (n, n)]:
-            representing the transition matrix
-            P[i, j] is the probability of transitioning from state i to state j
-            n: the number of state in the Markov Chain
-
-    returns:
-        [a numpy.ndarray of shape (1, n)]:
-            representing the steady state probabilities
-        or None on failure
-    """
+    '''
+        Determines the steady state probabilities of a regular
+        markov chain
+    '''
     # check that P is the correct type and dimensions
     if type(P) is not np.ndarray or len(P.shape) != 2:
         return None
